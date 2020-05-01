@@ -16,7 +16,15 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const repository = {
+      title: "Desafio ReactJS",
+      url: "https://github.com/josepholiveira",
+      techs: ["React", "NodeJS"],
+    };
+    const { data, status } = await api.post("/repositories", repository);
+    if (status === 200) {
+      setRepositories([...repositories, data]);
+    }
   }
 
   async function handleRemoveRepository(id) {
